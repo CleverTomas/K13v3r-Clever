@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K13v37 ║ Clever</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <style>
+        /* Variables de Colores */
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #b469ff;
+            --accent-color: #00d9ff;
+            --text-color: #ffffff;
+            --dark-text: #333333;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        /* Reset y Estilos Básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+            background-attachment: fixed;
+            color: var(--text-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Styling */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .glass:hover {
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* Navigation */
+        .header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .logo a {
+            color: var(--text-color);
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            position: relative;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-responsive {
+            display: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .inicio {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+            overflow: hidden;
+        }
+
+        .inicio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, #0f0c29 70%);
+            z-index: -1;
+        }
+
+        .contenido-banner {
+            position: relative;
+            text-align: center;
+            max-width: 800px;
+            padding: 3rem;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .contenedor-img {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem auto;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contenedor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .contenedor-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .contenido-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contenido-banner h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .redes {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .redes a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .redes a:hover {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sobre Mi Section */
+        .sobremi {
+            background: rgba(16, 13, 46, 0.5);
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sobremi::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23ffffff" stroke-width="1" opacity="0.05"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .contenido-seccion {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contenido-seccion h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        .contenido-seccion h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .contenido-seccion p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .contenido-seccion p span {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .fila {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: all 0.3s ease;
+        }
+
+        .col:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Intereses */
+        .contenedor-intereses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .interes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .interes:hover {
+            background: linear-gradient(45deg, rgba(108, 99, 255, 0.2), rgba(0, 217, 255, 0.2));
+            transform: translateY(-5px);
+        }
+
+        .interes i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 6rem 2rem;
+            background: rgba(20, 17, 55, 0.6);
+            position: relative;
+        }
+
+        .curriculum::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23ffffff" stroke-width="1" opacity="0.05"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .item {
+            position: relative;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: all 0.3s ease;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .item h4 {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .item .casa {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .item .fecha {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .item p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .item img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 1rem 0;
+            transition: transform 0.3s ease;
+        }
+
+        .item img:hover {
+            transform: scale(1.05);
+        }
+
+        .centrado {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 2rem;
+            background: rgba(16, 13, 46, 0.5);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .project-info p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contacto {
+            padding: 6rem 2rem;
+            background: rgba(20, 17, 55, 0.6);
+        }
+
+        .contacto .col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contacto input, .contacto textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-color);
+            font-size: 1rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .contacto input:focus, .contacto textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+        }
+
+        .contacto button {
+            position: relative;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .contacto button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contacto button .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            z-index: -1;
+            transition: width 0.5s ease;
+        }
+
+        .contacto button:hover .overlay {
+            width: 100%;
+        }
+
+        .contacto button i {
+            margin-left: 0.5rem;
+        }
+
+        .contacto img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .info ul {
+            list-style: none;
+        }
+
+        .info ul li {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .info ul li i {
+            margin-right: 1rem;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            padding: 2rem;
+            background: rgba(10, 8, 28, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        footer .arriba {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer .arriba:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer .redes {
+            margin-top: 0;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float-particle 15s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 980px) {
+            header {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: rgba(10, 8, 28, 0.9);
+                backdrop-filter: blur(10px);
+                border-radius: 0 0 20px 20px;
+                padding: 1rem 0;
+                gap: 0;
+            }
+            
+            nav ul.responsive {
+                display: flex;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+                border-radius: 0;
+            }
+            
+            .nav-responsive {
+                display: block;
+            }
+            
+            .contenido-banner {
+                padding: 2rem 1rem;
+            }
+            
+            .contenido-banner h1 {
+                font-size: 2rem;
+            }
+            
+            .contenido-banner h2 {
+                font-size: 1rem;
+            }
+            
+            .contenedor-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .fila {
+                flex-direction: column;
+            }
+            
+            .col {
+                min-width: auto;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .contenedor-intereses {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contenido-banner {
+                width: 90%;
+            }
+            
+            .redes a {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Música de Fondo */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 10px 15px;
+            gap: 10px;
+        }
+
+        .music-control button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-control button:hover {
+            color: var(--accent-color);
+        }
+
+        .music-control input {
+            width: 100px;
+            background: rgba(255, 255, 255, 2);
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .evidencia {
+            margin-top: 1rem;
+        }
+
+        .evidencia h5 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .evidencia-img {
+            width: 100%;
+            max-width: 300px;
+            margin: 0.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .evidencia-img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div class="particles">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const particlesContainer = document.querySelector('.particles');
+                const particleCount = 15;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Random size
+                    const size = Math.random() * 20 + 5;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random position
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    
+                    // Random animation duration
+                    const duration = Math.random() * 15 + 10;
+                    particle.style.animationDuration = `${duration}s`;
+                    
+                    // Random delay
+                    const delay = Math.random() * 5;
+                    particle.style.animationDelay = `${delay}s`;
+                    
+                    // Random color
+                    const colors = ['rgba(108, 99, 255, 0.2)', 'rgba(180, 105, 255, 0.2)', 'rgba(0, 217, 255, 0.2)'];
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            });
+        </script>
+    </div>
+
+    <!-- Música de Fondo -->
+    <audio id="background-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control">
+        <button id="play-pause-btn" onclick="toggleMusic()">
+            <i class="fa-solid fa-pause"></i>
+        </button>
+        <input type="range" id="volume-control" min="0" max="1" step="0.1" value="0.5">
+    </div>
+
+    <!-- MENU HEADER -->
+    <div class="header-container">
+        <header>
+            <div class="logo">
+                <a href="#">Clever</a>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
+                    <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
+                    <li><a href="#curriculum" onclick="seleccionar()">MIS APRENDIZAJES</a></li>
+                    <li><a href="#portfolio" onclick="seleccionar()">PORTFOLIO</a></li>
+                    <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
+                </ul>
+            </nav>
+            <div class="nav-responsive" onclick="mostrarOcultarMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+    </div>
+
+    <!-- SECCION INICIO -->
+    <section id="inicio" class="inicio">
+        <div class="contenido-banner glass">
+            <div class="contenedor-img">
+                <img src="img/mifotoo.jpg" alt="Foto de perfil">
+            </div>
+            <h1>Cleverson Juarez</h1>
+            <h2>Pre-Ingeniero en Ciencias de la computación y Tecnología de la información - Experto en aprender, no tanto pero ahí voy 😅</h2>
+            <div class="redes">
+                <a href="https://www.facebook.com/clever.juar3z" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/tomasju246" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.reddit.com/u/THOMAS41638747/s/UktKPCdGFo" target="_blank"><i class="fa-brands fa-reddit"></i></a>
+                <a href="https://www.instagram.com/tjca.0o0" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.twitch.tv/clever_60" target="_blank"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://outlook.office.com/mail/tom251435@uvg.edu.gt" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION SOBRE MI -->
+    <section id="sobremi" class="sobremi">
+        <div class="contenido-seccion">
+            <h2>Sobre Mí</h2>
+            <p><span>Hola, soy Clever Juarez.</span> tengo 20 años vivo en Mixco Guatemala.
+                Estudié en las Salle y después en el Centro Educativo Vocacional San José.
+                Mis intereses incluyen aprender a programar, ya sea Javascript, Python, Angular. Base de Datos, 
+                si es posible C++ es lo que mas me gusta aunque sea costosa, y aprender mucho de Linux y por supuesto más sobre 
+                computación y desarrollo de juegos, y explorar la inteligencia artificial. Tomé la carrera 
+                de Ingeniería en Computación porque es lo que me apasiona y me motiva. 
+                Me encanta aprender cosas nuevas y resolver problemas complejos, y creo que la Ingeniería en 
+                Computación me permitirá hacerlo en un campo emocionante y en constante evolución.
+                Además, creo que la tecnología es el futuro y quiero ser parte de él.</p>
+
+            <div class="fila">
+                <!-- Mi primer mes en la universidad -->
+                <div class="col glass">
+                    <h3>Mi Primer Mes En La Universidad --UVG--</h3>
+                    <p>Mi primer mes en la Universidad se basa en bastantes emociones y experiencias, en el primer mes
+                        de la Universidad del Valle de Guatemala mientras comienzo mi carrera en Ingeniería en Ciencias de la Computación Y Tecnología 
+                        de la Información. Descubrir el mundo académico de la carrera fue muy increíble, especialmente en las clases de 
+                        Introducción que han despertado mi interés y curiosidad por lo tanto han mostrado la 
+                        amplitud de conocimientos que explorar. La interacción con mis compañeros y profesores ha sido muy buena,
+                        creando un ambiente de aprendizaje y muy muy colaborativo que me ha motivado seguir adelante y esforzarme más.</p> 
+                    <p>Sin embargo, no todo ha sido un camino de rosas. Adaptarme a la carga académica y a la 
+                        dinámica de estudio ha sido todo un reto. Equilibrar el tiempo entre las clases,
+                        las tareas y las actividades extracurriculares no ha sido fácil.
+                        La transición a la vida universitaria también ha significado hacer ajustes 
+                        en mi rutina diaria y en mi estilo de aprendizaje. Esto ha requerido un 
+                        esfuerzo extra para organizarme y mantenerme al día con las exigencias académicas.</p>
+                    <p>A pesar de los desafíos, he encontrado un apoyo invaluable en mis
+                        compañeros y en los recursos que ofrece la universidad.
+                        Esto me ha ayudado a superar obstáculos y a crecer tanto
+                        académica como personalmente. A medida que avanzo en mi 
+                        primer mes en la UVG, me emociona ver las oportunidades de 
+                        aprendizaje y crecimiento que se presentan. Aunque reconozco que aún 
+                        hay aspectos por mejorar, como la gestión del tiempo y la adaptación
+                        a un ritmo de estudio más intenso, estoy ansioso por seguir 
+                        explorando este nuevo mundo universitario y enfrentar los desafíos
+                        con determinación y entusiasmo.</p>
+                </div>
+
+                <!-- Intereses -->
+                <div class="col glass">
+                    <h3>Intereses</h3>
+                    <div class="contenedor-intereses">
+                        <div class="interes">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>JUEGOS</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-headphones"></i>
+                            <span>MÚSICA</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-plane"></i>
+                            <span>VIAJAR</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-brands fa-windows"></i>
+                            <span>Windows</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-person-hiking"></i>
+                            <span>DEPORTE</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-book"></i>
+                            <span>LIBROS</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-car"></i>
+                            <span>AUTOS</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-linux"></i>
+                            <span>Linux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION CURRICULUM -->
+    <section id="curriculum" class="curriculum">
+        <div class="contenido-seccion">
+            <h2>Mis aprendizajes en Computación</h2>
+
+            <div class="fila">
+                <div class="col izquierda">
+                    <div class="item">
+                        <h4>1</h4>
+                        <span class="casa">1. Diseño de Aplicaciones y Recopilación de Feedback del Usuario</span>
+                        <span class="fecha"></span>
+                        <p>En un proyecto de clase, diseñamos una aplicación móvil similar a Uber, pero adaptada a las necesidades de la comunidad universitaria de la UVG. Este proyecto involucró no solo el diseño de la interfaz de usuario (UI) y la experiencia de usuario (UX), sino también la crucial etapa de recopilar feedback del usuario a través de entrevistas.</p>
+                        <p>Salimos a la universidad a entrevistar a estudiantes sobre nuestra idea. La mayoría recibió positivamente el concepto, sugiriendo que habláramos con las autoridades universitarias para explorar su viabilidad. Sin embargo, algunos estudiantes señalaron similitudes con Uber, expresando dudas sobre su potencial éxito. Esta experiencia me enseñó la importancia de la investigación de usuarios y la validación de ideas a través de la retroalimentación directa.</p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <h4>2</h4>
+                        <span class="casa">2. Fundamentos de Programación en Python</span>
+                        <span class="fecha">programación Basica</span>
+                        <p>En la clase de Programación Básica, he consolidado mis habilidades en programación utilizando Python. He realizado varios ejercicios que me han ayudado a comprender conceptos fundamentales como los ciclos while, la entrada de datos del usuario y las estructuras condicionales.</p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <h4>3</h4>
+                        <span class="casa">Problema de la Cerca</span>
+                        <span class="fecha"></span>
+                        <p>En la clase de Programación Básica, el 1 de marzo de 2025, si no estoy mal, se nos planteó un problema que requería integrar conocimientos matemáticos con la programación: calcular los requerimientos para cercar un terreno rectangular. El problema simulaba la situación de un granjero que necesita calcular el perímetro de su terreno, el costo de la madera para la cerca y la cantidad de postes necesarios. Esto requirió que tradujera las fórmulas geométricas para el perímetro y el área a código Python.</p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col derecha">
+                    <div class="item">
+                        <h4>1</h4>
+                        <span class="casa">Evidencia</span>
+                        <span class="fecha"></span>
+                        <p>Aunque no puedo incluir las grabaciones de las entrevistas, puedo describir la estructura de la misma, incluyendo preguntas abiertas sobre la utilidad de la aplicación, su diseño y sus posibles mejoras. También puedo incluir bocetos de la interfaz de usuario del prototipo VRVG.</p>
+                        <div class="evidencia">
+                            <h5>Imágenes de Evidencia:</h5>
+                           <!-- <img src="img/evidencia1.jpg" alt="Evidencia 1" class="evidencia-img">-->
+                           <!-- <img src="img/evidencia2.jpg" alt="Evidencia 2" class="evidencia-img">-->
+                        </div>
+                        <span class="casa">Metacognición</span>
+                        <p>Este proyecto me hizo consciente de la importancia de comprender las necesidades del usuario antes de desarrollar cualquier aplicación. No basta con tener una buena idea; es fundamental validar esa idea con el público objetivo para asegurar su éxito. Aprendí la importancia de la iteración y la adaptación del diseño basado en el feedback recibido.</p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="item">
+                        <h4>2</h4>
+                        <span class="casa">Evidencia</span>
+                        <span class="fecha"></span>
+                        <p>A continuación, se presentan ejemplos de código que ilustran algunos de los ejercicios realizados:</p>
+                        <div class="evidencia">
+                            <h5>Imágenes de Evidencia:</h5>
+                            <img src="ImagendeCODIGOS/sdadasda.jpg" alt="Ciclo while" class="evidencia-img">
+                            <img src="ImagendeCODIGOS/Captura de pantalla 2025-03-04 234815.jpg" alt="Cálculo del promedio" class="evidencia-img">
+                        </div>
+                        <span class="casa">Metacognición</span>
+                        <p>Estos ejercicios me han ayudado a comprender la lógica fundamental de la programación y a desarrollar habilidades para escribir código limpio y eficiente. He aprendido a descomponer problemas en pasos más pequeños y a utilizar estructuras de control de flujo para controlar el flujo de ejecución de un programa. La práctica constante es clave para dominar estos conceptos.</p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="item">
+                        <h4>3</h4>
+                        <span class="casa">Evidencia</span>
+                        <span class="fecha"></span>
+                        <p>A continuación, se presenta un ejemplo de cómo implementé la solución en Python:</p>
+                        <div class="evidencia">
+                            <h5>Imágenes de Evidencia:</h5>
+                            <img src="ImagendeCODIGOS/Granjero.jpg" alt="Código Cerca" class="evidencia-img">
+                        </div>
+                        <span class="casa">Metacognición</span>
+                        <p>Este ejercicio me permitió combinar conocimientos de diferentes áreas, como matemáticas y programación. Aprendí a traducir un problema del mundo real en un programa de computadora, teniendo en cuenta variables y posibles errores. La precisión en los cálculos y la claridad del código fueron esenciales para obtener una solución correcta y comprensible. Además, me hizo reflexionar sobre la importancia de documentar el código para que otros puedan entenderlo fácilmente. Este problema me hizo darme cuenta de que la programación no es solo escribir código, sino también comprender el problema y conceptualizar la solución.</p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                
+            </div>
+        </div>
+        <div class="item der centrado">
+            <h4>Con estos tres ejemplos, he demostrado mi progreso en la comprensión de los fundamentos de la programación y el diseño de aplicaciones. Estoy emocionado por los desafíos que se avecinan y por seguir aprendiendo y creciendo en este campo.</h4>
+        </div>
+    </section>
+
+    
+
+    <!-- SECCION PORTFOLIO -->
+    <section id="portfolio" class="portfolio">
+        <div class="contenido-seccion">
+            <h2>PORTFOLIO</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%236c63ff' opacity='0.3'/></svg>" alt="Proyecto 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>Aplicación de Transporte</h3>
+                        <p>Diseño de una aplicación móvil para estudiantes universitarios.</p>
+                        <a href="#" class="project-link">Ver Detalles</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23b469ff' opacity='0.3'/></svg>" alt="Proyecto 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Problema de la Cerca</h3>
+                        <p>Implementación de un algoritmo para calcular el perímetro de un terreno.</p>
+                        <a href="#" class="project-link">Ver Detalles</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%2300d9ff' opacity='0.3'/></svg>" alt="Proyecto 3">
+                    </div>
+                    <div class="project-info">
+                        <h3>Introducción a Python</h3>
+                        <p>Proyectos básicos de programación en Python.</p>
+                        <a href="#" class="project-link">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION CONTACTO -->
+    <section id="contacto" class="contacto">
+        <div class="contenido-seccion">
+            <h2>CONTACTO</h2>
+            <div class="fila">
+                <!-- Formulario -->
+                <div class="col">
+                    <form action="https://formspree.io/f/mldjoekb" method="POST">
+                        <input type="text" name="nombre" placeholder="Tú Nombre" required>
+                        <input type="email" name="email" placeholder="Dirección de correo" required>
+                        <input type="tel" name="telefono" placeholder="Número telefónico">
+                        <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+                        <button type="submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+                <!-- Mapa -->
+                <div class="col">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%236c63ff' opacity='0.3'/></svg>" alt="">
+                    <div class="info">
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Mixco Guatemala, Altos del encinal 
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-mobile-screen"></i>
+                                num: +502 4834 4082
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-envelope"></i>
+                                Email: tom251435@uvg.edu.gt
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#inicio" class="arriba">
+            <i class="fa-solid fa-angles-up"></i>
+        </a>
+        <div class="redes">
+            <a href="https://www.facebook.com/clever.juar3z" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://x.com/tomasju246" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.reddit.com/u/THOMAS41638747/s/UktKPCdGFo" target="_blank"><i class="fa-brands fa-reddit"></i></a>
+            <a href="https://www.threads.net/@tjca.0o0" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.twitch.tv/clever_60" target="_blank"><i class="fa-brands fa-twitch"></i></a>
+            <a href="https://outlook.office.com/mail/tom251435@uvg.edu.gt" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </footer>
+
+
+    <!-- Resto del código del portafolio... -->
+
+    <script>
+        // Menú Responsivo
+        const navResponsive = document.querySelector('.nav-responsive');
+        const nav = document.querySelector('nav ul');
+
+        navResponsive.addEventListener('click', () => {
+            nav.classList.toggle('responsive');
+        });
+
+        // Animación de Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header-container');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+
+        // Animación de Carga de Contenido
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.project-card, .service-card, .profile-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            elements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(50px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(element);
+            });
+        });
+
+        // Validación del Formulario
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('¡Mensaje enviado exitosamente!');
+                form.reset();
+            });
+        }
+
+        // Música de Fondo
+        const music = document.getElementById('background-music');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const volumeControl = document.getElementById('volume-control');
+
+        // Intentar reproducir automáticamente
+        setTimeout(() => {
+            music.play().catch(e => {
+                console.log('No se pudo reproducir automáticamente. Esperando interacción del usuario.');
+            });
+        }, 2000);
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            } else {
+                music.pause();
+                playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            }
+        }
+
+        volumeControl.addEventListener('input', () => {
+            music.volume = volumeControl.value;
+        });
+    </script>
+</body>
+</html>
