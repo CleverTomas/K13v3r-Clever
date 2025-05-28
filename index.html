@@ -6,7 +6,6 @@
     <title>K13v37 ║ Clever</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <style>
-        /* Variables de Colores */
         :root {
             --primary-color: #6c63ff;
             --secondary-color: #b469ff;
@@ -17,8 +16,6 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
         }
-
-        /* Reset y Estilos Básicos */
         * {
             margin: 0;
             padding: 0;
@@ -33,8 +30,6 @@
             overflow-x: hidden;
             min-height: 100vh;
         }
-
-        /* Glassmorphism Styling */
         .glass {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -49,8 +44,6 @@
             box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5);
             transform: translateY(-5px);
         }
-
-        /* Navigation */
         .header-container {
             position: fixed;
             top: 0;
@@ -127,8 +120,6 @@
             color: var(--text-color);
             font-size: 1.5rem;
         }
-
-        /* Hero Section */
         .inicio {
             position: relative;
             height: 100vh;
@@ -234,16 +225,17 @@
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
-        /* Sobre Mi Section */
-        .sobremi {
-            background: rgba(16, 13, 46, 0.5);
+        section {
             padding: 6rem 2rem;
             position: relative;
             z-index: 1;
         }
 
-        .sobremi::before {
+        section.darker-bg { 
+            background: rgba(20, 17, 55, 0.6);
+        }
+
+        section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -296,6 +288,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
+            justify-content: center; 
         }
 
         .col {
@@ -315,13 +308,16 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
-        .col h3 {
+        .col h3, .col h4 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             color: var(--accent-color);
         }
-
-        /* Intereses */
+        .col h4 { 
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
         .contenedor-intereses {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -350,27 +346,6 @@
             margin-bottom: 0.5rem;
             color: var(--accent-color);
         }
-
-        /* Curriculum Section */
-        .curriculum {
-            padding: 6rem 2rem;
-            background: rgba(20, 17, 55, 0.6);
-            position: relative;
-        }
-
-        .curriculum::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23ffffff" stroke-width="1" opacity="0.05"/></svg>') no-repeat center center;
-            background-size: cover;
-            opacity: 0.05;
-            z-index: -1;
-        }
-
         .item {
             position: relative;
             padding: 2rem;
@@ -430,13 +405,18 @@
             transform: scale(1.05);
         }
 
+        .item .bloom-level {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
         .centrado {
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
         }
-
-        /* Portfolio Section */
         .portfolio {
             padding: 6rem 2rem;
             background: rgba(16, 13, 46, 0.5);
@@ -504,8 +484,6 @@
         .project-link:hover {
             transform: translateX(5px);
         }
-
-        /* Contact Section */
         .contacto {
             padding: 6rem 2rem;
             background: rgba(20, 17, 55, 0.6);
@@ -630,8 +608,6 @@
         footer .redes {
             margin-top: 0;
         }
-
-        /* Floating Particles */
         .particles {
             position: fixed;
             top: 0;
@@ -659,8 +635,6 @@
                 opacity: 0;
             }
         }
-
-        /* Responsive design */
         @media screen and (max-width: 980px) {
             header {
                 padding: 0.8rem 1.5rem;
@@ -740,7 +714,6 @@
                 font-size: 0.9rem;
             }
         }
-
         /* Música de Fondo */
         .music-control {
             position: fixed;
@@ -771,10 +744,42 @@
 
         .music-control input {
             width: 100px;
-            background: rgba(255, 255, 255, 2);
+            background: transparent;
             border: none;
             border-radius: 5px;
             padding: 5px;
+        }
+        .music-control input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            margin-top: -3px; 
+            box-shadow: 0px 0px 5px rgba(0,217,255,0.7);
+        }
+        .music-control input[type=range]::-moz-range-thumb {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            box-shadow: 0px 0px 5px rgba(0,217,255,0.7);
+        }
+        .music-control input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+        }
+        .music-control input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
         }
 
         .evidencia {
@@ -789,11 +794,12 @@
 
         .evidencia-img {
             width: 100%;
-            max-width: 300px;
-            margin: 0.5rem;
+            max-width: 300px; 
+            margin: 0.5rem 0;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            display: block;
         }
 
         .evidencia-img:hover {
@@ -802,7 +808,6 @@
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
     <div class="particles">
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -812,25 +817,19 @@
                 for (let i = 0; i < particleCount; i++) {
                     const particle = document.createElement('div');
                     particle.classList.add('particle');
-                    
-                    // Random size
                     const size = Math.random() * 20 + 5;
                     particle.style.width = `${size}px`;
                     particle.style.height = `${size}px`;
-                    
-                    // Random position
+                  
                     particle.style.left = `${Math.random() * 100}%`;
                     particle.style.top = `${Math.random() * 100}%`;
                     
-                    // Random animation duration
                     const duration = Math.random() * 15 + 10;
                     particle.style.animationDuration = `${duration}s`;
                     
-                    // Random delay
                     const delay = Math.random() * 5;
                     particle.style.animationDelay = `${delay}s`;
                     
-                    // Random color
                     const colors = ['rgba(108, 99, 255, 0.2)', 'rgba(180, 105, 255, 0.2)', 'rgba(0, 217, 255, 0.2)'];
                     particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                     
@@ -840,7 +839,6 @@
         </script>
     </div>
 
-    <!-- Música de Fondo -->
     <audio id="background-music" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
     </audio>
@@ -852,7 +850,6 @@
         <input type="range" id="volume-control" min="0" max="1" step="0.1" value="0.5">
     </div>
 
-    <!-- MENU HEADER -->
     <div class="header-container">
         <header>
             <div class="logo">
@@ -862,8 +859,9 @@
                 <ul>
                     <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
                     <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
-                    <li><a href="#curriculum" onclick="seleccionar()">MIS APRENDIZAJES</a></li>
-                    <li><a href="#portfolio" onclick="seleccionar()">PORTAFOLIO</a></li>
+                    <li><a href="#concepcion-cc" onclick="seleccionar()">MI VISIÓN CC</a></li>
+                    <li><a href="#logros-ciclo" onclick="seleccionar()">LOGROS CICLO</a></li> <!-- Changed ID from curriculum to logros-ciclo -->
+                    <li><a href="#balance-ciclo" onclick="seleccionar()">BALANCE CICLO</a></li>
                     <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
                 </ul>
             </nav>
@@ -882,12 +880,9 @@
             <h1>Cleverson Juarez</h1>
             <h2>Pre-Ingeniero en Ciencias de la computación y Tecnología de la información - Experto en aprender, no tanto pero ahí voy 😅</h2>
             <div class="redes">
-                <a href="https://www.facebook.com/clever.juar3z" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="https://x.com/tomasju246" target="_blank"><i class="fa-brands fa-twitter"></i></a>
                 <a href="https://www.reddit.com/u/THOMAS41638747/s/UktKPCdGFo" target="_blank"><i class="fa-brands fa-reddit"></i></a>
-                <a href="https://www.instagram.com/tjca.0o0" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.twitch.tv/clever_60" target="_blank"><i class="fa-brands fa-twitch"></i></a>
-                <a href="https://outlook.office.com/mail/tom251435@uvg.edu.gt" target="_blank"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </section>
@@ -970,153 +965,305 @@
                             <i class="fa-solid fa-linux"></i>
                             <span>Linux</span>
                         </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-art"></i>
+                            <span>IA</span>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCION CURRICULUM -->
-    <section id="curriculum" class="curriculum">
+    <!-- SECCION CONCEPCION DE CIENCIA DE LA COMPUTACION -->
+    <section id="concepcion-cc" class="sobremi darker-bg">
         <div class="contenido-seccion">
-            <h2>Mis aprendizajes en Computación</h2>
+            <h2>Mi Visión de la Ciencia de la Computación</h2>
+            <div class="fila">
+                <div class="col glass">
+                    <h3>Entendiendo la Ciencia de la Computación</h3>
+                    <p>
+                        Para mí, la Ciencia de la Computación es el estudio de la información, el cómputo y sus aplicaciones. 
+                        Va mucho más allá de simplemente "saber programar". Implica entender cómo las máquinas procesan la información,
+                         cómo se diseñan los algoritmos eficientes para resolver problemas, cómo se estructuran los datos
+                          y cómo podemos usar la tecnología para crear soluciones innovadoras. Es un campo en constante evolución,
+                           que toca todas las facetas de nuestra vida moderna.
+                    </p>
+                    <p>
+                        Un científico de la computación no solo es un programador; es un solucionador de problemas, un innovador y, 
+                        a menudo, un investigador. Se encarga de diseñar sistemas eficientes, desarrollar nuevas teorías para el cómputo, 
+                        mejorar la seguridad de la información, crear inteligencias artificiales o incluso idear cómo hacer
+                         que las máquinas aprendan por sí solas. En esencia, trabajan para llevar el potencial de 
+                         la computación a nuevas fronteras.
+                </div>
+            </div>
+            <div class="fila" style="margin-top: 2rem;">
+                <div class="col glass">
+                    <h3>Mi Camino en el Campo de la Computación</h3>
+                    <p>
+                        Me veo trabajando en este campo de la computación, especialmente en el ámbito del <strong>desarrollo de juegos o la inteligencia artificial</strong>. 
+                        Me entusiasma la idea de crear mundos interactivos y experiencias inmersivas, o de construir sistemas que puedan aprender, razonar y adaptarse. 
+                        La creatividad, la lógica y el desafío de construir algo desde cero que impacte o entretenga a otros es lo que realmente me motiva. 
+                        También me interesa mucho el área de la ciberseguridad, asegurando que las innovaciones tecnológicas sean seguras y fiables para todos.
+                    </p>
+                    <p>
+                        Esta carrera representa una constante oportunidad de aprendizaje y evolución, y
+                         me visualizo inmerso en proyectos que no solo me desafíen intelectualmente, 
+                         sino que también aporten valor significativo. Mi objetivo es no solo dominar
+                          las herramientas y lenguajes actuales, sino también entender las teorías
+                          subyacentes para poder adaptarme y liderar en un futuro tecnológico que siempre está en movimiento.
+                    </p>
+                    <!-- Puedo agregar una imagen o video aquí si tengo algo que represente mi visión o una carrera que me inspire -->
+                    <!-- <img src="img/tu_vision_ia.jpg" alt="Visión de IA o juegos" class="evidencia-img"> -->
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- SECCION MIS LOGROS Y APRENDIZAJES DEL CICLO -->
+    <section id="logros-ciclo" class="curriculum"> 
+        <div class="contenido-seccion">
+            <h2>Logros y Aprendizajes del Ciclo</h2>
             <div class="fila">
                 <div class="col izquierda">
+                    <!-- LOGRO 1: DISEÑO DE APLICACIONES Y RECOPILACIÓN DE FEEDBACK -->
                     <div class="item">
-                        <h4>1</h4>
-                        <span class="casa">1. Diseño de Aplicaciones y Recopilación de Feedback del Usuario</span>
-                        <span class="fecha"></span>
+                        <h4>1. Diseño de Aplicaciones y Recopilación de Feedback del Usuario </h4>
+                        <span class="casa">Introducción a la Programación</span>
                         <p>En un proyecto de clase, diseñamos una aplicación móvil similar a Uber, pero adaptada a las necesidades de la comunidad universitaria de la UVG. Este proyecto involucró no solo el diseño de la interfaz de usuario (UI) y la experiencia de usuario (UX), sino también la crucial etapa de recopilar feedback del usuario a través de entrevistas.</p>
                         <p>Salimos a la universidad a entrevistar a estudiantes sobre nuestra idea. La mayoría recibió positivamente el concepto, sugiriendo que habláramos con las autoridades universitarias para explorar su viabilidad. Sin embargo, algunos estudiantes señalaron similitudes con Uber, expresando dudas sobre su potencial éxito. Esta experiencia me enseñó la importancia de la investigación de usuarios y la validación de ideas a través de la retroalimentación directa.</p>
+                        <p class="bloom-level">
+                            <strong>Nivel de Aprendizaje (Taxonomía de Bloom): Aplicar / Analizar</strong>
+                            (Apliqué conceptos de diseño UI/UX y analicé el feedback de los usuarios).
+                        </p>
                         <div class="conectori">
                             <div class="circuloi"></div>
                         </div>
                     </div>
+                    <!-- LOGRO 2: FUNDAMENTOS DE PROGRAMACIÓN EN PYTHON -->
                     <div class="item">
-                        <h4>2</h4>
-                        <span class="casa">2. Fundamentos de Programación en Python</span>
-                        <span class="fecha">programación Basica</span>
-                        <p>En la clase de Programación Básica, he consolidado mis habilidades en programación utilizando Python. He realizado varios ejercicios que me han ayudado a comprender conceptos fundamentales como los ciclos while, la entrada de datos del usuario y las estructuras condicionales.</p>
+                        <h4>2. Fundamentos de Programación en Python </h4>
+                        <span class="casa">Programación Básica</span>
+                        <span class="fecha">Primer ciclo</span>
+                        <p>En la clase de Programación Básica, he consolidado mis habilidades en programación utilizando Python. He realizado varios ejercicios que me han ayudado a comprender conceptos fundamentales como los ciclos `while`, la entrada de datos del usuario y las estructuras condicionales (`if/else`). Aprendí a escribir código de manera lógica y estructurada, resolviendo problemas paso a paso.</p>
+                        <p class="bloom-level">
+                            <strong>Nivel de Aprendizaje (Taxonomía de Bloom): Comprender / Aplicar</strong>
+                            (Comprendí los principios básicos de programación y los apliqué en la creación de scripts funcionales).
+                        </p>
                         <div class="conectori">
                             <div class="circuloi"></div>
                         </div>
                     </div>
+                    <!-- LOGRO 3: PROBLEMA DE LA CERCA -->
                     <div class="item">
-                        <h4>3</h4>
-                        <span class="casa">Problema de la Cerca</span>
-                        <span class="fecha"></span>
-                        <p>En la clase de Programación Básica, el 1 de marzo de 2025, si no estoy mal, se nos planteó un problema que requería integrar conocimientos matemáticos con la programación: calcular los requerimientos para cercar un terreno rectangular. El problema simulaba la situación de un granjero que necesita calcular el perímetro de su terreno, el costo de la madera para la cerca y la cantidad de postes necesarios. Esto requirió que tradujera las fórmulas geométricas para el perímetro y el área a código Python.</p>
+                        <h4>3. Problema de la Cerca </h4>
+                        <span class="casa">Programación Básica</span>
+                        <span class="fecha">1 de marzo de 2025</span>
+                        <p>En la clase de Programación Básica, se nos planteó un problema que requería integrar conocimientos matemáticos con la programación: calcular los requerimientos para cercar un terreno rectangular. El problema simulaba la situación de un granjero que necesita calcular el perímetro de su terreno, el costo de la madera para la cerca y la cantidad de postes necesarios. Esto requirió que tradujera las fórmulas geométricas para el perímetro y el área a código Python, manejando la entrada del usuario y los cálculos.</p>
+                        <p class="bloom-level">
+                            <strong>Nivel de Aprendizaje (Taxonomía de Bloom): Aplicar / Analizar</strong>
+                            (Apliqué fórmulas matemáticas a un problema real y analicé cómo traducir la lógica a código Python).
+                        </p>
                         <div class="conectori">
                             <div class="circuloi"></div>
                         </div>
                     </div>
+
+                    <!-- NUEVO LOGRO: CURSO NO RELACIONADO CON COMPUTACIÓN -->
+                    <!--<div class="item">
+                        <h4>4. Gestión de Proyectos para Pequeñas Empresas </h4>
+                        <span class="casa">Emprendimiento o Habilidades Gerenciales</span>
+                        <span class="fecha">Primer ciclo - Curso "Economía y Sociedad"</span>
+                        <p>
+                            En el curso de "Economía y Sociedad", colaboramos en un proyecto simulado
+                            donde tuvimos que planificar y presentar la viabilidad de una pequeña empresa.
+                             Mi rol fue liderar la sección de logística y presupuestos,
+                              donde investigué precios de materiales, 
+                              costos operativos y proyecciones de ingresos.
+                               Aprendí a usar herramientas básicas de planificación financiera 
+                               y a trabajar en equipo para desarrollar un plan de negocio coherente.
+                                El logro fue una presentación exitosa del proyecto, recibiendo feedback positivo sobre la coherencia del plan financiero.
+                        </p>
+                        <p class="bloom-level">
+                            <strong>Nivel de Aprendizaje (Taxonomía de Bloom): Aplicar / Crear</strong>
+                            (Apliqué conceptos económicos a un caso práctico y creé un modelo de negocio con proyecciones).
+                        </p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>-->
                 </div>
 
 
-
-                <div class="col derecha">
+                <div class="col derecha"> 
+                    <!-- EVIDENCIA Y METACOGNICION PARA LOGRO 1 -->
                     <div class="item">
-                        <h4>1</h4>
-                        <span class="casa">Evidencia</span>
-                        <span class="fecha"></span>
+                        <h4>1. Evidencia y Metacognición </h4>
                         <p>Aunque no puedo incluir las grabaciones de las entrevistas, puedo describir la estructura de la misma, incluyendo preguntas abiertas sobre la utilidad de la aplicación, su diseño y sus posibles mejoras. También puedo incluir bocetos de la interfaz de usuario del prototipo VRVG.</p>
                         <div class="evidencia">
                             <h5>Imágenes de Evidencia:</h5>
-                           <!-- <img src="img/evidencia1.jpg" alt="Evidencia 1" class="evidencia-img">-->
-                           <!-- <img src="img/evidencia2.jpg" alt="Evidencia 2" class="evidencia-img">-->
+                           <!-- <img src="img/evidencia1.jpg" alt="Evidencia 1 - Diseño UI/UX" class="evidencia-img">-->
+                           <!-- <img src="img/evidencia2.jpg" alt="Evidencia 2 - Prototipo VRVG" class="evidencia-img">-->
+                             <p>
+                                <!-- TODO: AGREGAR IMAGENES DE EVIDENCIA DE UI/UX O BODEZTOS-->
+                                <span style="color: rgba(255,255,255,0.7); font-size: 0.9em;">(Puedes insertar imágenes de tus bocetos o un enlace a un prototipo de Figma/MarvelApp aquí si los tienes)</span>
+                             </p>
                         </div>
                         <span class="casa">Metacognición</span>
-                        <p>Este proyecto me hizo consciente de la importancia de comprender las necesidades del usuario antes de desarrollar cualquier aplicación. No basta con tener una buena idea; es fundamental validar esa idea con el público objetivo para asegurar su éxito. Aprendí la importancia de la iteración y la adaptación del diseño basado en el feedback recibido.</p>
+                        <p>Este proyecto me hizo consciente de la importancia de comprender las necesidades del usuario antes de desarrollar cualquier aplicación. No basta con tener una buena idea; es fundamental validar esa idea con el público objetivo para asegurar su éxito. Aprendí la importancia de la iteración y la adaptación del diseño basado en el feedback recibido. También reflexioné sobre la necesidad de anticipar cómo los usuarios podrían reaccionar o utilizar una nueva solución, incluso si es muy innovadora.
+                        </p>
                         <div class="conectord">
                             <div class="circulod"></div>
                         </div>
                     </div>
-
-
+                    <!-- EVIDENCIA Y METACOGNICION PARA LOGRO 2 -->
                     <div class="item">
-                        <h4>2</h4>
-                        <span class="casa">Evidencia</span>
-                        <span class="fecha"></span>
+                        <h4>2. Evidencia y Metacognición</h4>
                         <p>A continuación, se presentan ejemplos de código que ilustran algunos de los ejercicios realizados:</p>
                         <div class="evidencia">
                             <h5>Imágenes de Evidencia:</h5>
                             <img src="ImagendeCODIGOS/sdadasda.jpg" alt="Ciclo while" class="evidencia-img">
                             <img src="ImagendeCODIGOS/Captura de pantalla 2025-03-04 234815.jpg" alt="Cálculo del promedio" class="evidencia-img">
+                            <!-- TODO: AGREGAR MAS IMAGENES/FRAGMENTOS DE CÓDIGO SI QUIERo -->
                         </div>
                         <span class="casa">Metacognición</span>
-                        <p>Estos ejercicios me han ayudado a comprender la lógica fundamental de la programación y a desarrollar habilidades para escribir código limpio y eficiente. He aprendido a descomponer problemas en pasos más pequeños y a utilizar estructuras de control de flujo para controlar el flujo de ejecución de un programa. La práctica constante es clave para dominar estos conceptos.</p>
+                        <p>Estos ejercicios me han ayudado a comprender la lógica fundamental de la programación y a desarrollar habilidades para escribir código limpio y eficiente. He aprendido a descomponer problemas en pasos más pequeños y a utilizar estructuras de control de flujo para controlar el flujo de ejecución de un programa. La práctica constante es clave para dominar estos conceptos, y he mejorado mi capacidad de depuración de errores y de entender el impacto de cada línea de código.
+                        </p>
                         <div class="conectord">
                             <div class="circulod"></div>
                         </div>
                     </div>
-
-
-
+                    <!-- EVIDENCIA Y METACOGNICION PARA LOGRO 3 -->
                     <div class="item">
-                        <h4>3</h4>
-                        <span class="casa">Evidencia</span>
-                        <span class="fecha"></span>
+                        <h4>3. Evidencia y Metacognición (Problema de la Cerca)</h4>
                         <p>A continuación, se presenta un ejemplo de cómo implementé la solución en Python:</p>
                         <div class="evidencia">
                             <h5>Imágenes de Evidencia:</h5>
                             <img src="ImagendeCODIGOS/Granjero.jpg" alt="Código Cerca" class="evidencia-img">
+                            <!-- TODO: AGREGAR MAS IMAGENES -->
                         </div>
                         <span class="casa">Metacognición</span>
-                        <p>Este ejercicio me permitió combinar conocimientos de diferentes áreas, como matemáticas y programación. Aprendí a traducir un problema del mundo real en un programa de computadora, teniendo en cuenta variables y posibles errores. La precisión en los cálculos y la claridad del código fueron esenciales para obtener una solución correcta y comprensible. Además, me hizo reflexionar sobre la importancia de documentar el código para que otros puedan entenderlo fácilmente. Este problema me hizo darme cuenta de que la programación no es solo escribir código, sino también comprender el problema y conceptualizar la solución.</p>
+                        <p>Este ejercicio me permitió combinar conocimientos de diferentes áreas, como matemáticas
+                             y programación. Aprendí a traducir un problema del mundo real en un programa de 
+                             computadora, teniendo en cuenta variables y posibles errores. La precisión en los 
+                             cálculos y la claridad del código fueron esenciales para obtener una solución correcta
+                              y comprensible. Además, me hizo reflexionar sobre la importancia de documentar 
+                              el código para que otros puedan entenderlo fácilmente. Este problema me hizo 
+                              darme cuenta de que la programación no es solo escribir código, sino 
+                              también comprender el problema y conceptualizar la solución antes de empezar a programar.
+                        </p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div>
+
+                    <!-- EVIDENCIA Y METACOGNICION PARA LOGRO 4 (NO RELACIONADO CON COMPUTACIÓN) -->
+                    <div class="item">
+                        <h4>4. Evidencia y Metacognición </h4>
+                        <p>
+                            Como evidencia, tengo una captura de la primera página del plan 
+                            de negocio que creamos en Word. También puedo describir cómo estructuramos
+                             las proyecciones financieras en una hoja de cálculo básica.
+                        </p>
+                        <div class="evidencia">
+                            <h5>Evidencia:</h5>
+                            <!-- <img src="img/proyecto_economia.jpg" alt="Evidencia Proyecto Economía" class="evidencia-img">-->
+                            <span style="color: rgba(255,255,255,0.7); font-size: 0.9em;">(Puedes insertar aquí la imagen de una diapositiva o un diagrama relevante a tu proyecto, o dejar una descripción detallada.)</span>
+                        </div>
+                        <span class="casa">Metacognición</span>
+                        <p>
+                            Este proyecto me hizo dar cuenta de la importancia de la planificación y la investigación rigurosa, 
+                            incluso en áreas fuera de la tecnología. Aprendí a comunicar ideas complejas de manera efectiva a 
+                            un público no técnico y a colaborar de manera más organizada dentro de un equipo, asignando 
+                            responsabilidades y cumpliendo plazos. Me ayudó a mejorar mis habilidades de análisis de información 
+                            y a pensar críticamente sobre la viabilidad de ideas en el mundo real, desarrollando una perspectiva más holística.
+                        </p>
                         <div class="conectord">
                             <div class="circulod"></div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-                
             </div>
-        </div>
-        <div class="item der centrado">
-            <h4>Con estos tres ejemplos, he demostrado mi progreso en la comprensión de los fundamentos de la programación y el diseño de aplicaciones. Estoy emocionado por los desafíos que se avecinan y por seguir aprendiendo y creciendo en este campo.</h4>
+            <div class="item der centrado">
+                <h4>Con estos ejemplos, he demostrado mi progreso en la comprensión de los 
+                    fundamentos de la programación, el diseño de aplicaciones y la aplicación de
+                     conocimientos en diversas áreas académicas. Estoy emocionado por los desafíos que 
+                     se avecinan y por seguir aprendiendo y creciendo en este campo.</h4>
+            </div>
         </div>
     </section>
 
-    
-
-    <!-- SECCION PORTFOLIO -->
-    <section id="portfolio" class="portfolio">
+    <!-- NUEVA SECCION: BALANCE Y REFLEXIÓN DEL CICLO -->
+    <section id="balance-ciclo" class="sobremi darker-bg">
         <div class="contenido-seccion">
-            <h2>PORTFOLIO</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%236c63ff' opacity='0.3'/></svg>" alt="Proyecto 1">
-                    </div>
-                    <div class="project-info">
-                        <h3>Aplicación de Transporte</h3>
-                        <p>Diseño de una aplicación móvil para estudiantes universitarios.</p>
-                        <a href="#" class="project-link">Ver Detalles</a>
-                    </div>
+            <h2>Balance y Reflexión del Primer Ciclo</h2>
+            <div class="fila">
+                <div class="col glass">
+                    <h3>Lo que me llevo de este ciclo</h3>
+                    <p>
+                        De este primer ciclo universitario, me llevo valiosas lecciones 
+                        y experiencias. En primer lugar, la consolidación de relaciones significativas con mis compañeros
+                         formar grupos de estudio y apoyarnos mutuamente ha sido fundamental para afrontar los retos académicos.
+                          En segundo lugar, he logrado una <strong>comprension considerable en mis métodos de estudio,con esto no queiro decir que ya soy un mejor estudiante
+                            y que ya tenga 100% de notas en todos los cursos, quiero decir esto porque he aprendido a organizarme mejor, a gestionar mi tiempo de manera más efectiva y a utilizar recursos como foros en línea y grupos de estudio para resolver dudas.</strong>
+                          </strong>, aprendiendo a priorizar 
+                          tareas y a utilizar técnicas de estudio más eficientes, como el aprendizaje activo y la resolución de problemas de forma más independiente.
+                    </p>
+                    <p>
+                        También he experimentado un refinamiento en mis objetivos profesionales. 
+                        Antes estaba interesado en la programación en general, pero este ciclo me ha afianzado en el
+                         interés por el desarrollo de juegos y la inteligencia artificial, viendo cómo puedo combinar la creatividad con la lógica.
+                    </p>
+                    <p class="bloom-level">
+                        <strong>Nivel de Aprendizaje (Taxonomía de Bloom): Evaluar</strong>
+                        (He evaluado mi proceso de aprendizaje, mis relaciones y mis objetivos, llegando a conclusiones significativas.)
+                    </p>
+                    <!-- Pued agregar una imagen que represente el crecimiento, la amistad, etc. -->
+                    <!-- <img src="img/crecimiento.jpg" alt="Crecimiento Personal" class="evidencia-img"> -->
                 </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23b469ff' opacity='0.3'/></svg>" alt="Proyecto 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>Problema de la Cerca</h3>
-                        <p>Implementación de un algoritmo para calcular el perímetro de un terreno.</p>
-                        <a href="#" class="project-link">Ver Detalles</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%2300d9ff' opacity='0.3'/></svg>" alt="Proyecto 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>Introducción a Python</h3>
-                        <p>Proyectos básicos de programación en Python.</p>
-                        <a href="#" class="project-link">Ver Detalles</a>
-                    </div>
+                <div class="col glass">
+                    <h3>Reflexión Final del Ciclo</h3>
+                    <h4>¿Qué salió bien?</h4>
+                    <p>
+                        Salió muy bien mi <strong>adaptación al ritmo universitario</strong>, a pesar de los desafíos iniciales. 
+                        Logré organizarme para entregar todas las tareas y obtuve buenos resultados, no al 100% pero si hubieron buenos resultados 
+                         en cursos clave como Programación Básica, Quimica, con la de mi carrera y biologia. La interacción con mis profesores 
+                         y compañeros fue muy fluida y me sentí parte de la comunidad UVG desde el primer momento, 
+                         lo que me ayudó a superar la timidez inicial. 
+                         También fue un éxito mi capacidad de aprender rápido nuevos conceptos, 
+                         como los de python o el ambiente de un poco en jAVA.
+                    </p>
+                    <h4>¿Qué no salió tan bien?</h4>
+                    <p>
+                        Al principio del ciclo, mi <strong>gestión del tiempo no fue la mejor</strong>; subestimé la carga de trabajo 
+                        y me encontré un poco abrumado.
+                         También me costó un poco balancear la vida académica con mi vida personal. 
+                         Hubo momentos donde ciertos conceptos, como algunas operaciones en la línea de Lenguajes en Python,
+                          me tomaron más tiempo de lo esperado para dominar, requiriendo un esfuerzo extra.
+                    </p>
+                    <h4>¿Qué has aprendido?</h4>
+                    <p>
+                        He aprendido que la perseverancia y la organización son claves en la universidad. 
+                        Más allá  aparte de programacion basica y los otros cursos, he aprendido a buscar 
+                        información de forma independiente,
+                         a no temer a los errores y a valorar el trabajo en equipo.
+                          También he aprendido a manejar la frustración cuando un problema no se resuelve 
+                          a la primera y a pedir ayuda cuando es necesario. 
+                          He mejorado mis habilidades de "pensar computacionalmente" y de abordar problemas de manera estructurada.
+                    </p>
+                    <h4>¿Qué te deja con dudas?</h4>
+                    <p>
+                        Aunque me siento más seguro en mi elección de carrera, 
+                        todavía me quedan <strong>dudas sobre el área específica en la que me quiero especializar</strong> 
+                        dentro de la Ciencia de la Computación (¿realmente juegos, IA o ciberseguridad?). 
+                        También me preocupa cómo mantener un balance saludable entre la intensa carga académica
+                         y las actividades extracurriculares en ciclos futuros. 
+                         Me gustaría saber más sobre cómo los profesionales gestionan esto a largo plazo.
+                    </p>
+                    <p class="bloom-level">
+                        <strong>Nivel de Aprendizaje (Taxonomía de Bloom): Evaluar / Crear</strong>
+                        (Evalué mi desempeño, reflexioné sobre mis aprendizajes y estoy en el proceso de crear un camino para mis dudas futuras.)
+                    </p>
                 </div>
             </div>
         </div>
@@ -1128,28 +1275,27 @@
             <h2>CONTACTO</h2>
             <div class="fila">
                 <!-- Formulario -->
-                <div class="col">
+                <div class="col glass">
                     <form action="https://formspree.io/f/mldjoekb" method="POST">
                         <input type="text" name="nombre" placeholder="Tú Nombre" required>
                         <input type="email" name="email" placeholder="Dirección de correo" required>
                         <input type="tel" name="telefono" placeholder="Número telefónico">
                         <textarea name="mensaje" placeholder="Mensaje" required></textarea>
-                        <button type="submit">Enviar Mensaje</button>
+                        <button type="submit">
+                            Enviar Mensaje
+                            <div class="overlay"></div>
+                        </button>
                     </form>
                 </div>
 
-                <!-- Mapa -->
-                <div class="col">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%236c63ff' opacity='0.3'/></svg>" alt="">
+                <!-- Mapa o Información de Contacto -->
+                <div class="col glass">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%236c63ff' opacity='0.3'/></svg>" alt="Imagen de ubicación" class="evidencia-img"> <!-- Usando tu clase evidencia-img -->
                     <div class="info">
                         <ul>
                             <li>
                                 <i class="fa-solid fa-location-dot"></i>
                                 Mixco Guatemala, Altos del encinal 
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-mobile-screen"></i>
-                                Tel: (502) 4834 4082
                             </li>
                             <li>
                                 <i class="fa-solid fa-envelope"></i>
@@ -1168,36 +1314,40 @@
             <i class="fa-solid fa-angles-up"></i>
         </a>
         <div class="redes">
-            <a href="https://www.facebook.com/clever.juar3z" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://x.com/tomasju246" target="_blank"><i class="fa-brands fa-twitter"></i></a>
             <a href="https://www.reddit.com/u/THOMAS41638747/s/UktKPCdGFo" target="_blank"><i class="fa-brands fa-reddit"></i></a>
-            <a href="https://www.threads.net/@tjca.0o0" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.twitch.tv/clever_60" target="_blank"><i class="fa-brands fa-twitch"></i></a>
-            <a href="https://outlook.office.com/mail/tom251435@uvg.edu.gt" target="_blank"><i class="fa-solid fa-envelope"></i></a>
         </div>
     </footer>
 
 
-    <!-- Resto del código del portafolio... -->
-
     <script>
-        // Menú Responsivo
-        const navResponsive = document.querySelector('.nav-responsive');
-        const nav = document.querySelector('nav ul');
+        // Funciones para el menú responsivo y navegación
+        const nav = document.getElementById('nav');
 
-        navResponsive.addEventListener('click', () => {
-            nav.classList.toggle('responsive');
-        });
+        function mostrarOcultarMenu(){
+            if(nav.classList.contains('responsive')){
+                nav.classList.remove('responsive');
+            }else{
+                nav.classList.add('responsive');
+            }
+        }
 
-        // Animación de Scroll
-        window.addEventListener('scroll', () => {
+        // Esta función ahora también cerrará el menú responsivo
+        function seleccionar(){
+            nav.classList.remove('responsive');
+        }
+
+        // Animación de Scroll - 
+        /* window.addEventListener('scroll', () => {
             const header = document.querySelector('.header-container');
             header.classList.toggle('scrolled', window.scrollY > 0);
-        });
+        }); */
 
-        // Animación de Carga de Contenido
+        // Animación de Carga de Contenido (solo si los elementos no tienen transición inicial definida en CSS)
+        // Ya tienes transiciones CSS en .glass y .project-card, esta parte es menos crítica.
         document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.project-card, .service-card, .profile-card');
+            const elements = document.querySelectorAll('.project-card, .service-card, .col.glass, .item'); // Agregados .col.glass y .item
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1206,7 +1356,7 @@
                         entry.target.style.transform = 'translateY(0)';
                     }
                 });
-            });
+            }, { threshold: 0.1 }); //  ajustar el threshold (porcentaje del elemento visible)
 
             elements.forEach(element => {
                 element.style.opacity = 0;
@@ -1233,10 +1383,14 @@
 
         // Intentar reproducir automáticamente
         setTimeout(() => {
-            music.play().catch(e => {
-                console.log('No se pudo reproducir automáticamente. Esperando interacción del usuario.');
+            // Este `play()` puede fallar si el navegador requiere interacción del usuario primero
+            music.play().then(() => {
+                playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }).catch(e => {
+                console.log('La reproducción automática fue bloqueada. El usuario deberá iniciarla.');
+                playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
             });
-        }, 2000);
+        }, 1000); // Pequeño retraso para permitir la carga del DOM
 
         function toggleMusic() {
             if (music.paused) {
